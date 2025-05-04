@@ -3,7 +3,7 @@
 
 using namespace diff;
 
-TEST(TopologyLoaderTest, NonExistentFile) {
+TEST(TestTopologyLoader, NonExistentFile) {
     EXPECT_THROW(
         try { TopologyLoader{"fake_path"s}; } catch (const TopologyLoaderException &e) {
             EXPECT_STREQ("Topology file not accessible. Path: \"fake_path\".", e.what());
@@ -12,7 +12,7 @@ TEST(TopologyLoaderTest, NonExistentFile) {
         TopologyLoaderException);
 }
 
-TEST(TopologyLoaderTest, TopologyNotAnArray) {
+TEST(TestTopologyLoader, TopologyNotAnArray) {
     TopologyLoader topologyLoader{R"( { "object": 123 } )"_json};
     Topology topology;
 
@@ -24,7 +24,7 @@ TEST(TopologyLoaderTest, TopologyNotAnArray) {
         TopologyLoaderException);
 }
 
-TEST(TopologyLoaderTest, ComponentNotAnObject) {
+TEST(TestTopologyLoader, ComponentNotAnObject) {
     TopologyLoader topologyLoader{R"( [ 123 ] )"_json};
     Topology topology;
 
@@ -36,7 +36,7 @@ TEST(TopologyLoaderTest, ComponentNotAnObject) {
         TopologyLoaderException);
 }
 
-TEST(TopologyLoaderTest, ComponentTypeMissing) {
+TEST(TestTopologyLoader, ComponentTypeMissing) {
     TopologyLoader topologyLoader{R"( [ {} ] )"_json};
     Topology topology;
 
@@ -48,7 +48,7 @@ TEST(TopologyLoaderTest, ComponentTypeMissing) {
         TopologyLoaderException);
 }
 
-TEST(TopologyLoaderTest, ComponentTypeInteger) {
+TEST(TestTopologyLoader, ComponentTypeInteger) {
     TopologyLoader topologyLoader{R"( [ { "type" : 123 } ] )"_json};
     Topology topology;
 
@@ -60,7 +60,7 @@ TEST(TopologyLoaderTest, ComponentTypeInteger) {
         TopologyLoaderException);
 }
 
-TEST(TopologyLoaderTest, ComponentTypeEmpty) {
+TEST(TestTopologyLoader, ComponentTypeEmpty) {
     TopologyLoader topologyLoader{R"( [ { "type" : "" } ] )"_json};
     Topology topology;
 
@@ -72,7 +72,7 @@ TEST(TopologyLoaderTest, ComponentTypeEmpty) {
         TopologyLoaderException);
 }
 
-TEST(TopologyLoaderTest, ComponentIdMissing) {
+TEST(TestTopologyLoader, ComponentIdMissing) {
     TopologyLoader topologyLoader{R"( [ { "type" : "MyType" } ] )"_json};
     Topology topology;
 
@@ -84,7 +84,7 @@ TEST(TopologyLoaderTest, ComponentIdMissing) {
         TopologyLoaderException);
 }
 
-TEST(TopologyLoaderTest, ComponentIdInteger) {
+TEST(TestTopologyLoader, ComponentIdInteger) {
     TopologyLoader topologyLoader{R"( [ { "type" : "MyType", "id" : 123 } ] )"_json};
     Topology topology;
 
@@ -96,7 +96,7 @@ TEST(TopologyLoaderTest, ComponentIdInteger) {
         TopologyLoaderException);
 }
 
-TEST(TopologyLoaderTest, ComponentIdEmpty) {
+TEST(TestTopologyLoader, ComponentIdEmpty) {
     TopologyLoader topologyLoader{R"( [ { "type" : "MyType", "id" : "" } ] )"_json};
     Topology topology;
 
@@ -108,7 +108,7 @@ TEST(TopologyLoaderTest, ComponentIdEmpty) {
         TopologyLoaderException);
 }
 
-TEST(TopologyLoaderTest, DependenciesNotAnArray) {
+TEST(TestTopologyLoader, DependenciesNotAnArray) {
     TopologyLoader topologyLoader{R"( [ { "type" : "MyType", "id" : "myId", "dependencies" : "myDep" } ] )"_json};
     Topology topology;
 
@@ -120,7 +120,7 @@ TEST(TopologyLoaderTest, DependenciesNotAnArray) {
         TopologyLoaderException);
 }
 
-TEST(TopologyLoaderTest, DependencyEmptyString) {
+TEST(TestTopologyLoader, DependencyEmptyString) {
     TopologyLoader topologyLoader{R"( [ { "type" : "MyType", "id" : "myId", "dependencies" : [ "myDep", "" ] } ] )"_json};
     Topology topology;
 
@@ -132,7 +132,7 @@ TEST(TopologyLoaderTest, DependencyEmptyString) {
         TopologyLoaderException);
 }
 
-TEST(TopologyLoaderTest, DependencyNoString) {
+TEST(TestTopologyLoader, DependencyNoString) {
     TopologyLoader topologyLoader{R"( [ { "type" : "MyType", "id" : "myId", "dependencies" : [ "myDep", 123 ] } ] )"_json};
     Topology topology;
 
@@ -144,7 +144,7 @@ TEST(TopologyLoaderTest, DependencyNoString) {
         TopologyLoaderException);
 }
 
-TEST(TopologyLoaderTest, ConfigNoObject) {
+TEST(TestTopologyLoader, ConfigNoObject) {
     TopologyLoader topologyLoader{R"( [ { "type" : "MyType", "id" : "myId", "config" : [ 123 ] } ] )"_json};
     Topology topology;
 
@@ -156,7 +156,7 @@ TEST(TopologyLoaderTest, ConfigNoObject) {
         TopologyLoaderException);
 }
 
-TEST(TopologyLoaderTest, ConfigKeyEmpty) {
+TEST(TestTopologyLoader, ConfigKeyEmpty) {
     TopologyLoader topologyLoader{R"( [ { "type" : "MyType", "id" : "myId", "config" : { "" : "value" } } ] )"_json};
     Topology topology;
 
@@ -168,7 +168,7 @@ TEST(TopologyLoaderTest, ConfigKeyEmpty) {
         TopologyLoaderException);
 }
 
-TEST(TopologyLoaderTest, ConfigEntryTypeFloat) {
+TEST(TestTopologyLoader, ConfigEntryTypeFloat) {
     TopologyLoader topologyLoader{R"( [ { "type" : "MyType", "id" : "myId", "config" : { "key" : 1.1 } } ] )"_json};
     Topology topology;
 
@@ -183,7 +183,7 @@ TEST(TopologyLoaderTest, ConfigEntryTypeFloat) {
         TopologyLoaderException);
 }
 
-TEST(TopologyLoaderTest, ConfigEntryObjectSizeNot1) {
+TEST(TestTopologyLoader, ConfigEntryObjectSizeNot1) {
     TopologyLoader topologyLoader{R"( [ { "type" : "MyType", "id" : "myId", "config" : { "key" : { "uint8_t" : 1, "uint32_t" : 2 } } } ] )"_json};
     Topology topology;
 
@@ -195,7 +195,7 @@ TEST(TopologyLoaderTest, ConfigEntryObjectSizeNot1) {
         TopologyLoaderException);
 }
 
-TEST(TopologyLoaderTest, ConfigEntryObjectTypeUnknown) {
+TEST(TestTopologyLoader, ConfigEntryObjectTypeUnknown) {
     TopologyLoader topologyLoader{R"( [ { "type" : "MyType", "id" : "myId", "config" : { "key" : { "uint10_t" : 1 } } } ] )"_json};
     Topology topology;
 
@@ -210,20 +210,19 @@ TEST(TopologyLoaderTest, ConfigEntryObjectTypeUnknown) {
         TopologyLoaderException);
 }
 
-TEST(TopologyLoaderTest, ConfigEntryObjectValueNotUnsigned) {
+TEST(TestTopologyLoader, ConfigEntryObjectValueNotUnsigned) {
     TopologyLoader topologyLoader{R"( [ { "type" : "MyType", "id" : "myId", "config" : { "key" : { "uint8_t" : -10 } } } ] )"_json};
     Topology topology;
 
     EXPECT_THROW(
         try { topologyLoader.load(topology); } catch (const TopologyLoaderException &e) {
-            EXPECT_STREQ("Component{#0, \"MyType\" : \"myId\"} : Config{\"key\", uint8_t} - Config entry value type shall be unsigned integer.",
-                         e.what());
+            EXPECT_STREQ("Component{#0, \"MyType\" : \"myId\"} : Config{\"key\", uint8_t} - Config entry value type shall be unsigned integer.", e.what());
             throw;
         },
         TopologyLoaderException);
 }
 
-TEST(TopologyLoaderTest, ConfigEntryObjectValueNotInteger) {
+TEST(TestTopologyLoader, ConfigEntryObjectValueNotInteger) {
     TopologyLoader topologyLoader{R"( [ { "type" : "MyType", "id" : "myId", "config" : { "key" : { "int16_t" : 1.1 } } } ] )"_json};
     Topology topology;
 
@@ -235,21 +234,19 @@ TEST(TopologyLoaderTest, ConfigEntryObjectValueNotInteger) {
         TopologyLoaderException);
 }
 
-TEST(TopologyLoaderTest, ConfigEntryObjectValueOutOfRange0) {
+TEST(TestTopologyLoader, ConfigEntryObjectValueOutOfRange0) {
     TopologyLoader topologyLoader{R"( [ { "type" : "MyType", "id" : "myId", "config" : { "key" : { "int8_t" : 511 } } } ] )"_json};
     Topology topology;
 
     EXPECT_THROW(
         try { topologyLoader.load(topology); } catch (const TopologyLoaderException &e) {
-            EXPECT_STREQ(
-                "Component{#0, \"MyType\" : \"myId\"} : Config{\"key\", int8_t{511}} - Config entry value shall be in range of its declared type.",
-                e.what());
+            EXPECT_STREQ("Component{#0, \"MyType\" : \"myId\"} : Config{\"key\", int8_t{511}} - Config entry value shall be in range of its declared type.", e.what());
             throw;
         },
         TopologyLoaderException);
 }
 
-TEST(TopologyLoaderTest, ConfigEntryObjectValueOutOfRange1) {
+TEST(TestTopologyLoader, ConfigEntryObjectValueOutOfRange1) {
     TopologyLoader topologyLoader{R"( [ { "type" : "MyType", "id" : "myId", "config" : { "key" : { "uint16_t" : 70000 } } } ] )"_json};
     Topology topology;
 
@@ -272,7 +269,7 @@ static const T &configCheckTypeAndGetValue(const Config &config, const std::stri
     return (*it)->value<T>();
 }
 
-TEST(TopologyLoaderTest, NoException) {
+TEST(TestTopologyLoader, NoException) {
     TopologyLoader topologyLoader{R"( 
     [
         {

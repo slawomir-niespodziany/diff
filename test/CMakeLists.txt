@@ -1,19 +1,35 @@
-# topology_loader_test
-add_executable(topology_loader_test "TopologyLoaderTest.cpp")
-    
-target_link_libraries(
-  topology_loader_test
-  diff
-  GTest::gtest_main
-)
+include(FetchContent)
 
-gtest_discover_tests(topology_loader_test)
-add_test(NAME topology_loader_test COMMAND topology_loader_test)
+FetchContent_Declare(json URL https://github.com/nlohmann/json/releases/download/v3.12.0/json.tar.xz
+                              DOWNLOAD_EXTRACT_TIMESTAMP ON)
+FetchContent_MakeAvailable(json)
 
+FetchContent_Declare(
+    googletest
+    URL https://github.com/google/googletest/releases/download/v1.17.0/googletest-1.17.0.tar.gz
+        DOWNLOAD_EXTRACT_TIMESTAMP ON)
+FetchContent_MakeAvailable(googletest)
 
-# cast_checker_test
-add_executable(cast_checker_test "CastCheckerTest.cpp")
-target_link_libraries(cast_checker_test diff GTest::gtest_main)
+enable_testing()
+include(GoogleTest)
 
-gtest_discover_tests(cast_checker_test)
-add_test(NAME cast_checker_test COMMAND cast_checker_test)
+# test_topology_loader
+add_executable(test_topology_loader TestTopologyLoader.cpp)
+
+set_property(TARGET test_topology_loader PROPERTY CXX_STANDARD 17)
+set_property(TARGET test_topology_loader PROPERTY CXX_STANDARD_REQUIRED ON)
+
+target_link_libraries(test_topology_loader diff::diff nlohmann_json::nlohmann_json
+                      GTest::gtest_main)
+
+gtest_discover_tests(test_topology_loader)
+
+# test_cast_checker
+add_executable(test_cast_checker TestCastChecker.cpp)
+
+set_property(TARGET test_cast_checker PROPERTY CXX_STANDARD 17)
+set_property(TARGET test_cast_checker PROPERTY CXX_STANDARD_REQUIRED ON)
+
+target_link_libraries(test_cast_checker diff::diff nlohmann_json::nlohmann_json GTest::gtest_main)
+
+gtest_discover_tests(test_cast_checker)

@@ -91,6 +91,9 @@ private:
 template <typename T>
 class Factory;
 
+template <typename T>
+class Instantiator;
+
 /**
  * @brief Specialization allowing initialization of component instance identifier and config.
  *
@@ -103,6 +106,7 @@ public:
 
 protected:
     friend class Factory<T>;
+    friend class Instantiator<T>;
 
     Component() : Component<>(diff::Demangler::of<T>(), std::move(initializer_.first), std::move(initializer_.second)) {}
 
@@ -128,6 +132,36 @@ private:
 
 template <typename T>
 std::pair<std::string /* id */, Config> Component<T>::initializer_;
+
+template <typename T>
+class Instantiator {
+public:
+    Instantiator() = delete;
+    Instantiator(const Instantiator&) = delete;
+    Instantiator(Instantiator&&) = delete;
+
+    Instantiator(const std::string& id) : id_{id} {}
+
+    Instantiator& operator=(const Instantiator&) = delete;
+    Instantiator& operator=(Instantiator&&) = delete;
+
+    template <typename U>
+    Instantiator& config(const std::string& key, const U& value) {
+        config_.emplace(std::make_unique<diff::ConfigEntry<U>>(key, value));
+        return *this;
+    }
+
+    template <typename... Args>
+    T make_instance(Args&&... args) {
+        Component<T>::initializer_.first = std::move(id_);
+        Component<T>::initializer_.second = std::move(config_);
+        return T{std::forward<Args>(args)...};
+    }
+
+private:
+    const std::string id_;
+    Config config_;
+};
 
 /**
  * @brief Used for component customization. Putting as<T> (where T is an abstract interface) as a template argument of the Component<...> template
