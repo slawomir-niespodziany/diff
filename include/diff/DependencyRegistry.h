@@ -181,12 +181,8 @@ private:
 inline bool operator<(const std::unique_ptr<DependencyRegister<>> &pFirst, const std::unique_ptr<DependencyRegister<>> &pSecond) {
     return pFirst->type() < pSecond->type();
 }
-inline bool operator<(const std::unique_ptr<DependencyRegister<>> &pDependencyRegister, const std::string &type) {
-    return pDependencyRegister->type() < type;
-}
-inline bool operator<(const std::string &type, const std::unique_ptr<DependencyRegister<>> &pDependencyRegister) {
-    return type < pDependencyRegister->type();
-}
+inline bool operator<(const std::unique_ptr<DependencyRegister<>> &pDependencyRegister, const std::string &type) { return pDependencyRegister->type() < type; }
+inline bool operator<(const std::string &type, const std::unique_ptr<DependencyRegister<>> &pDependencyRegister) { return type < pDependencyRegister->type(); }
 
 /**
  * @brief Keeps a record of dependency of multiple types. Aggregates multiple DependencyRegisters and provides an interface for accessing any
@@ -286,9 +282,9 @@ public:
      * @param id Dependency id.
      * @return T& Dependency reference.
      */
-    template <typename T, std::enable_if_t<!std::is_const<T>::value && !std::is_volatile<T>::value, bool> =
-                              true>   // TODO chek everywhere else? check for pointer/array etxc?
-    T &get(const std::string &id) const {
+    template <typename T, std::enable_if_t<!std::is_const<T>::value && !std::is_volatile<T>::value, bool> = true>   // TODO chek everywhere else? check for
+                                                                                                                    // pointer/array etxc?
+                                                                                                                    T &get(const std::string &id) const {
         const auto it = dependencyRegisters_.find(Demangler::of<T>());
         if (dependencyRegisters_.cend() == it) {
             throw DependencyRegisterNotFound(Demangler::of<T>(), id);

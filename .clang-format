@@ -1,7 +1,7 @@
 ---
 BasedOnStyle: Google
 IndentWidth: 4
-ColumnLimit: 180
+ColumnLimit: 160
 # does (int) x instead of (int)x
 SpaceAfterCStyleCast: true
 UseTab: Never

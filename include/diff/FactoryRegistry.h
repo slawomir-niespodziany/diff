@@ -48,8 +48,7 @@ public:
         std::vector<std::reference_wrapper<const std::string>> result;
 
         result.reserve(factories_.size());
-        std::transform(factories_.cbegin(), factories_.cend(), std::back_inserter(result),
-                       [](const Factory<> &factory) { return std::cref(factory.type()); });
+        std::transform(factories_.cbegin(), factories_.cend(), std::back_inserter(result), [](const Factory<> &factory) { return std::cref(factory.type()); });
 
         return result;
     }

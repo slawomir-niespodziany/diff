@@ -164,25 +164,24 @@ private:
         }
     }
 
-    void loadDependency(const std::string& componentIndex, const std::string& componentType, const std::string& componentId,
-                        const std::string& dependencyIndex, const nlohmann::json& dependencyJson,
-                        TopologyBuilder::TopologyEntryBuilder& topologyEntryBuilder) {
+    void loadDependency(const std::string& componentIndex, const std::string& componentType, const std::string& componentId, const std::string& dependencyIndex,
+                        const nlohmann::json& dependencyJson, TopologyBuilder::TopologyEntryBuilder& topologyEntryBuilder) {
         if (dependencyJson.is_string()) {
             const std::string id = dependencyJson.get<std::string>();
             if (id.empty()) {
-                throw TopologyLoaderException{"Component{#"s + componentIndex + ", \""s + componentType + "\" : \""s + componentId +
-                                              "\"} : Dependency{#"s + dependencyIndex + "} - Dependency id shall not be empty."s};
+                throw TopologyLoaderException{"Component{#"s + componentIndex + ", \""s + componentType + "\" : \""s + componentId + "\"} : Dependency{#"s +
+                                              dependencyIndex + "} - Dependency id shall not be empty."s};
             }
             topologyEntryBuilder.dependency(id);
 
         } else {
-            throw TopologyLoaderException{"Component{#"s + componentIndex + ", \""s + componentType + "\" : \""s + componentId +
-                                          "\"} : Dependency{#"s + dependencyIndex + "} - Dependency type shall be a string."s};
+            throw TopologyLoaderException{"Component{#"s + componentIndex + ", \""s + componentType + "\" : \""s + componentId + "\"} : Dependency{#"s +
+                                          dependencyIndex + "} - Dependency type shall be a string."s};
         }
     }
 
-    void loadConfig(const std::string& componentIndex, const std::string& componentType, const std::string& componentId,
-                    const nlohmann::json& componentJson, TopologyBuilder::TopologyEntryBuilder& topologyEntryBuilder) {
+    void loadConfig(const std::string& componentIndex, const std::string& componentType, const std::string& componentId, const nlohmann::json& componentJson,
+                    TopologyBuilder::TopologyEntryBuilder& topologyEntryBuilder) {
         const nlohmann::json::const_iterator it = componentJson.find(KEY_CONFIG);
         if (it != componentJson.cend()) {
             const nlohmann::json& json = *it;
@@ -205,8 +204,8 @@ private:
         }
     }
 
-    void loadConfigEntry(const std::string& componentIndex, const std::string& componentType, const std::string& componentId,
-                         const std::string& entryKey, const nlohmann::json& entryJson, TopologyBuilder::TopologyEntryBuilder& topologyEntryBuilder) {
+    void loadConfigEntry(const std::string& componentIndex, const std::string& componentType, const std::string& componentId, const std::string& entryKey,
+                         const nlohmann::json& entryJson, TopologyBuilder::TopologyEntryBuilder& topologyEntryBuilder) {
         if (entryJson.is_boolean()) {
             topologyEntryBuilder.config<bool>(entryKey, entryJson.get<bool>());
 
@@ -221,8 +220,8 @@ private:
 
         } else if (entryJson.is_object()) {
             if (1u != entryJson.size()) {
-                throw TopologyLoaderException{"Component{#"s + componentIndex + ", \""s + componentType + "\" : \""s + componentId +
-                                              "\"} : Config{\""s + entryKey + "\"} - Config entry object shall be of size 1."s};
+                throw TopologyLoaderException{"Component{#"s + componentIndex + ", \""s + componentType + "\" : \""s + componentId + "\"} : Config{\""s +
+                                              entryKey + "\"} - Config entry object shall be of size 1."s};
             }
 
             const nlohmann::json::const_iterator it = entryJson.cbegin();
@@ -231,9 +230,8 @@ private:
 
             if ((TYPE_UINT8 == type) || (TYPE_UINT16 == type) || (TYPE_UINT32 == type) || (TYPE_UINT64 == type)) {
                 if (!json.is_number_unsigned()) {
-                    throw TopologyLoaderException{"Component{#"s + componentIndex + ", \""s + componentType + "\" : \""s + componentId +
-                                                  "\"} : Config{\""s + entryKey + "\", "s + type +
-                                                  "} - Config entry value type shall be unsigned integer."s};
+                    throw TopologyLoaderException{"Component{#"s + componentIndex + ", \""s + componentType + "\" : \""s + componentId + "\"} : Config{\""s +
+                                                  entryKey + "\", "s + type + "} - Config entry value type shall be unsigned integer."s};
                 }
 
                 const uint64_t value = json.get<uint64_t>();
@@ -251,8 +249,8 @@ private:
                 }
             } else if ((TYPE_INT8 == type) || (TYPE_INT16 == type) || (TYPE_INT32 == type) || (TYPE_INT64 == type)) {
                 if (!json.is_number_integer()) {
-                    throw TopologyLoaderException{"Component{#"s + componentIndex + ", \""s + componentType + "\" : \""s + componentId +
-                                                  "\"} : Config{\""s + entryKey + "\", "s + type + "} - Config entry value type shall be integer."s};
+                    throw TopologyLoaderException{"Component{#"s + componentIndex + ", \""s + componentType + "\" : \""s + componentId + "\"} : Config{\""s +
+                                                  entryKey + "\", "s + type + "} - Config entry value type shall be integer."s};
                 }
 
                 const int64_t value = json.get<uint64_t>();
@@ -274,15 +272,14 @@ private:
                     "\"} - Config entry object type shall be one of {uint8_t, int8_t, uint16_t, int16_t, uint32_t, int32_t, uint64_t, int64_t}."s};
             }
         } else {
-            throw TopologyLoaderException{"Component{#"s + componentIndex + ", \""s + componentType + "\" : \""s + componentId + "\"} : Config{\""s +
-                                          entryKey + "\"} - Config entry type shall be one of {bool, ungigned int, signed int, string, object}."s};
+            throw TopologyLoaderException{"Component{#"s + componentIndex + ", \""s + componentType + "\" : \""s + componentId + "\"} : Config{\""s + entryKey +
+                                          "\"} - Config entry type shall be one of {bool, ungigned int, signed int, string, object}."s};
         }
     }
 
     template <typename T, typename U>
-    void loadConfigEntry(const std::string& componentIndex, const std::string& componentType, const std::string& componentId,
-                         const std::string& entryKey, const std::string& entryType, const U& entryValue,
-                         TopologyBuilder::TopologyEntryBuilder& topologyEntryBuilder) {
+    void loadConfigEntry(const std::string& componentIndex, const std::string& componentType, const std::string& componentId, const std::string& entryKey,
+                         const std::string& entryType, const U& entryValue, TopologyBuilder::TopologyEntryBuilder& topologyEntryBuilder) {
         static_assert(std::is_same<T, uint8_t>::value || std::is_same<T, int8_t>::value ||     //
                       std::is_same<T, uint16_t>::value || std::is_same<T, int16_t>::value ||   //
                       std::is_same<T, uint32_t>::value || std::is_same<T, int32_t>::value ||   //
@@ -290,8 +287,8 @@ private:
         static_assert(std::is_same<U, uint64_t>::value || std::is_same<U, int64_t>::value);
 
         if ((entryValue < static_cast<U>(std::numeric_limits<T>::min())) || (static_cast<U>(std::numeric_limits<T>::max()) < entryValue)) {
-            throw TopologyLoaderException{"Component{#"s + componentIndex + ", \""s + componentType + "\" : \""s + componentId + "\"} : Config{\""s +
-                                          entryKey + "\", "s + entryType + "{"s + std::to_string(entryValue) +
+            throw TopologyLoaderException{"Component{#"s + componentIndex + ", \""s + componentType + "\" : \""s + componentId + "\"} : Config{\""s + entryKey +
+                                          "\", "s + entryType + "{"s + std::to_string(entryValue) +
                                           "}} - Config entry value shall be in range of its declared type."s};
         }
 

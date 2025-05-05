@@ -45,8 +45,7 @@ public:
      * @param dependencyRegistry Registry of dependencies
      * @return std::unique_ptr<Component<>>
      */
-    virtual std::unique_ptr<Component<>> build(std::string &id, const DependencyIds &dependencyIds, Config &config,
-                                               DependencyRegistry &dependencyRegistry) = 0;
+    virtual std::unique_ptr<Component<>> build(std::string &id, const DependencyIds &dependencyIds, Config &config, DependencyRegistry &dependencyRegistry) = 0;
 
 protected:
     Factory(const std::string &type) : type_{type} {}
@@ -74,8 +73,7 @@ public:
     /**
      * @brief @see Factory<void>
      */
-    virtual std::unique_ptr<Component<>> build(std::string &id, const DependencyIds &dependencyIds, Config &config,
-                                               DependencyRegistry &dependencyRegistry) {
+    virtual std::unique_ptr<Component<>> build(std::string &id, const DependencyIds &dependencyIds, Config &config, DependencyRegistry &dependencyRegistry) {
         Component<T>::initializer_.first = std::move(id);
         Component<T>::initializer_.second = std::move(config);
 
@@ -115,15 +113,13 @@ private:
 
     private:
         template <int... Ints>
-        constexpr std::enable_if_t<std::is_constructible<T, decltype((Ints, Injector{DependencyRegistry{}, DependencyId{}}))...>::value,
-                                   std::unique_ptr<T>>
+        constexpr std::enable_if_t<std::is_constructible<T, decltype((Ints, Injector{DependencyRegistry{}, DependencyId{}}))...>::value, std::unique_ptr<T>>
         construct() const noexcept {
             return std::make_unique<T>((Injector{dependencyRegistry_, dependencyIds_[Ints]})...);
         }
 
         template <int... Ints>
-        constexpr std::enable_if_t<!std::is_constructible<T, decltype((Ints, Injector{DependencyRegistry{}, DependencyId{}}))...>::value,
-                                   std::unique_ptr<T>>
+        constexpr std::enable_if_t<!std::is_constructible<T, decltype((Ints, Injector{DependencyRegistry{}, DependencyId{}}))...>::value, std::unique_ptr<T>>
         construct() const noexcept {
             return construct<Ints..., sizeof...(Ints)>();
         }

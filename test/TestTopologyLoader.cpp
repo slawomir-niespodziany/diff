@@ -240,7 +240,8 @@ TEST(TestTopologyLoader, ConfigEntryObjectValueOutOfRange0) {
 
     EXPECT_THROW(
         try { topologyLoader.load(topology); } catch (const TopologyLoaderException &e) {
-            EXPECT_STREQ("Component{#0, \"MyType\" : \"myId\"} : Config{\"key\", int8_t{511}} - Config entry value shall be in range of its declared type.", e.what());
+            EXPECT_STREQ("Component{#0, \"MyType\" : \"myId\"} : Config{\"key\", int8_t{511}} - Config entry value shall be in range of its declared type.",
+                         e.what());
             throw;
         },
         TopologyLoaderException);

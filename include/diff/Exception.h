@@ -25,8 +25,7 @@ protected:
 };
 
 struct DependencyRegisterNotFound : public Exception {
-    DependencyRegisterNotFound(const std::string& type, const std::string& id)
-        : Exception{"Dependency "s + type + "{} with id=\""s + id + "\" not found."s} {}
+    DependencyRegisterNotFound(const std::string& type, const std::string& id) : Exception{"Dependency "s + type + "{} with id=\""s + id + "\" not found."s} {}
 };
 struct DependencyDuplicated : public Exception {
     DependencyDuplicated(const std::string& type, const std::string& id)
@@ -34,8 +33,7 @@ struct DependencyDuplicated : public Exception {
 };
 
 struct DependencyNotFound : public Exception {
-    DependencyNotFound(const std::string& type, const std::string& id)
-        : Exception{"Dependency "s + type + "{} with id=\""s + id + "\" not found."s} {}
+    DependencyNotFound(const std::string& type, const std::string& id) : Exception{"Dependency "s + type + "{} with id=\""s + id + "\" not found."s} {}
 };
 
 /**

@@ -83,7 +83,7 @@ private:
  * @brief IntegralCastChecker allows to perform a check against integral types.
  * @see std::is_integral
  */
-using IntegralCastChecker = CastChecker<bool, char, int8_t, uint8_t, wchar_t, char16_t, char32_t, int16_t, uint16_t, int32_t, uint32_t, int64_t,
-                                        uint64_t, long long, unsigned long long>;
+using IntegralCastChecker = CastChecker<bool, char, int8_t, uint8_t, wchar_t, char16_t, char32_t, int16_t, uint16_t, int32_t, uint32_t, int64_t, uint64_t,
+                                        long long, unsigned long long>;
 
 };   // namespace diff
