@@ -2,9 +2,9 @@
 Further referred to as **_diff_**.
 
 ## Make a difference
-_Diff_ is a C++ framework targeted for embedded systems. It provides a structured way to design and implement software - making it **modular**, **maintainable** and **reusable**. 
+Diff is a C++ framework targeted for embedded systems. It provides a structured way to design and implement software - making it **modular**, **maintainable** and **reusable**. 
 
-_Diff_ supports the whole **development process** from multiple perspectives:
+It supports the **development process** from multiple perspectives:
 - Directs **architects** to create modular design,
 - Narrows the playground for **development** and **QA** to focus on single problem at a time,
 - Lets **non-technical** team members to understand the design and even compose and configure the final application binary.
@@ -13,13 +13,13 @@ All that with **CI/CD** automation in mind.
 
 TODO Image.
 
-_Diff_ uses [Dependency Injection](https://en.wikipedia.org/wiki/Dependency_injection) design pattern on top of user-provided set of [software components](https://en.wikipedia.org/wiki/Software_component). _Diff components_ serve as building blocks for the design. Each component provides a solution to a distinct problem, leveraging decomposition. Each is designed and implemented independently. Each can be tested individually and any set of components can be tested together if needed. At the end, the resulting binary is composed of - at this point, already - off-the-shelf components. 
+The framework uses [Dependency Injection](https://en.wikipedia.org/wiki/Dependency_injection) design pattern on top of user-provided set of [software components](https://en.wikipedia.org/wiki/Software_component). Components in diff serve as building blocks for the final design. Each component provides a solution to a distinct problem, leveraging decomposition. Each is designed and implemented independently. Each can be tested individually and any set of components can be tested together if needed. At the end, the binary is composed of - at this point - off-the-shelf components. 
 
 ## Diff components, instances and modules
-_Diff_ uses two types of components - **Implementation Components** (or simply **Components**) and **Interface Components**. They come in **Modules**, which are their physical representations. Lastly, the framework creates **Component Instances** to compose a hierarchy required by the application binary.
+Diff uses two types of components - **Components** and **Interface Components**. They both come in **Modules**, which are their physical representations. Lastly, the framework creates **Component Instances** to compose a hierarchy required by the application.
 
-- **Component** (or _Implementation Component_) in _diff_ is a single C++ class that encapsulates a specific functionality. Its internal architecture may be complex, utilizing various other classes and libraries.
-- **Interface Component** is
+- **Component** in diff is a single C++ class which encapsulates a specific functionality. Its internal architecture may be complex, utilizing various other classes and libraries.
+- **Interface Component** in diff is a single abstract class which determines _how_ certain functionality shall be used.
 
 TODO
 
