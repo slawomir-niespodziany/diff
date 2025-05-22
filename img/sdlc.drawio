@@ -1,0 +1,91 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:138.0) Gecko/20100101 Firefox/138.0" version="27.0.6">
+  <diagram name="Page-1" id="DI_pONW6aE3lndULB7f6">
+    <mxGraphModel dx="1097" dy="670" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="cxv3Bj_0Zb1043b2Zh0B-1" value="Architect" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fontColor=#323232;strokeColor=#323232;" vertex="1" parent="1">
+          <mxGeometry x="165" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cxv3Bj_0Zb1043b2Zh0B-4" value="QA Engineer" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fontColor=#323232;strokeColor=#323232;" vertex="1" parent="1">
+          <mxGeometry x="405" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cxv3Bj_0Zb1043b2Zh0B-6" value="Business &amp;amp; &lt;br&gt;Management" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="45" y="320" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cxv3Bj_0Zb1043b2Zh0B-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startFill=0;startArrow=open;strokeColor=#797979;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="180" y="90" as="targetPoint" />
+            <mxPoint x="180" y="160" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cxv3Bj_0Zb1043b2Zh0B-22" value="Design" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#C2D5FC;strokeColor=none;fontColor=#393939;" vertex="1" parent="1">
+          <mxGeometry x="120" y="170" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cxv3Bj_0Zb1043b2Zh0B-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;startFill=0;startArrow=none;strokeColor=#797979;endFill=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="300" y="240" as="targetPoint" />
+            <mxPoint x="300" y="310" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cxv3Bj_0Zb1043b2Zh0B-23" value="&amp;nbsp;&amp;nbsp;&amp;nbsp; Implementation" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#C3E8C0;strokeColor=none;fontColor=#393939;" vertex="1" parent="1">
+          <mxGeometry x="240" y="170" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cxv3Bj_0Zb1043b2Zh0B-24" value="Testing &amp;amp; &lt;br&gt;Integration" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#FFF6BF;strokeColor=none;fontColor=#393939;" vertex="1" parent="1">
+          <mxGeometry x="360" y="170" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cxv3Bj_0Zb1043b2Zh0B-25" value="Maintenance" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#FFDBB7;strokeColor=none;fontColor=#393939;" vertex="1" parent="1">
+          <mxGeometry x="480" y="170" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cxv3Bj_0Zb1043b2Zh0B-26" value="Analysis" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#B5ADFC;strokeColor=none;fontColor=light-dark(#393939,#EDEDED);" vertex="1" parent="1">
+          <mxGeometry y="170" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cxv3Bj_0Zb1043b2Zh0B-29" value="DevOps Engineer" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fontColor=#323232;strokeColor=#323232;" vertex="1" parent="1">
+          <mxGeometry x="525" y="320" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cxv3Bj_0Zb1043b2Zh0B-34" value="Helps understand design details and keep track of the project for all tem members." style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="70.03" y="460" width="460" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cxv3Bj_0Zb1043b2Zh0B-18" value="&lt;div&gt;Directs  towards &lt;br&gt;architecting modular &lt;br&gt;solution.&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;fontStyle=3;labelBackgroundColor=default;" vertex="1" parent="1">
+          <mxGeometry x="190" y="90" width="130" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cxv3Bj_0Zb1043b2Zh0B-41" value="&lt;div&gt;Narrows and separates &lt;br&gt;problems to be tackled &lt;br&gt;individually.&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=3;labelBackgroundColor=default;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="310" y="250" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cxv3Bj_0Zb1043b2Zh0B-52" value="Supports multi-platform &lt;br&gt;execution &amp;amp; testing (out of the box, &lt;br&gt;e.g. Google Test Framework @ x86)." style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=3;labelBackgroundColor=default;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="430" y="90" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cxv3Bj_0Zb1043b2Zh0B-38" value="Developer " style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fontColor=#323232;strokeColor=#323232;" vertex="1" parent="1">
+          <mxGeometry x="285" y="320" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cxv3Bj_0Zb1043b2Zh0B-54" value="Provides more visibility on the &lt;br&gt;progress of further stages. &lt;br&gt;Tightens the feedback loop &lt;br&gt;for requirement validation." style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=3" vertex="1" parent="1">
+          <mxGeometry x="70" y="245" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="cxv3Bj_0Zb1043b2Zh0B-55" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;startFill=0;startArrow=none;strokeColor=#797979;endFill=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="59.80000000000001" y="240" as="targetPoint" />
+            <mxPoint x="59.80000000000001" y="310" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cxv3Bj_0Zb1043b2Zh0B-56" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;startFill=0;startArrow=none;strokeColor=#797979;endFill=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="539.86" y="240" as="targetPoint" />
+            <mxPoint x="539.86" y="310" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cxv3Bj_0Zb1043b2Zh0B-58" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startFill=0;startArrow=open;strokeColor=#797979;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="419.76" y="90" as="targetPoint" />
+            <mxPoint x="419.76" y="160" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cxv3Bj_0Zb1043b2Zh0B-59" value="Provides intrinsic CI/CD integration capabilities. &lt;br&gt;Supports automated OTA updates.&lt;div&gt;Allows to compose and configure different binaries &lt;br&gt;from pre-existing components, no coding. &lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=3;labelBackgroundColor=default;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="550" y="245" width="290" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="cxv3Bj_0Zb1043b2Zh0B-60" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;rotation=-90;fontColor=#717171;strokeColor=#818181;" vertex="1" parent="1">
+          <mxGeometry x="290.03" y="149.99" width="20" height="600.03" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

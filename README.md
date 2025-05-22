@@ -11,7 +11,7 @@ It supports software **development process** from multiple perspectives:
 
 All that with **CI/CD** automation in mind. 
 
-TODO Image.
+<p align="center"><img src="img/sdlc.png" alt="SDLC support from diff."/></p>
 
 The framework uses [Dependency Injection](https://en.wikipedia.org/wiki/Dependency_injection) design pattern on top of user-provided set of [software components](https://en.wikipedia.org/wiki/Software_component). Components in diff serve as **building blocks** for the final design. Each component provides a solution to a distinct problem, leveraging decomposition. Each is designed and implemented independently. Each can be tested individually and any set of components can be tested together if needed. At the end, the binary is composed of - at this point - off-the-shelf components, following a topology described by a **human-readable Json** file. 
 
