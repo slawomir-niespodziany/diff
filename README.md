@@ -6,7 +6,7 @@ Diff is a C++ framework targeted for embedded systems. It provides a structured 
 
 It supports embedded software development lifecycle from multiple perspectives:
 
-<p align="center"><img src="img/sdlc.png" width="801" alt="Diff support for SDLC."/></p>
+<p align="center"><img src="img/sdlc.png" alt="Diff support for SDLC."/></p>
 
 The framework uses [Dependency Injection](https://en.wikipedia.org/wiki/Dependency_injection) design pattern on top of user-provided set of [software components](https://en.wikipedia.org/wiki/Software_component). Components in diff serve as **building blocks** for the final design. Each component provides a solution to a distinct problem, leveraging decomposition. Each is designed and implemented independently. Each can be tested individually and any set of components can be tested together if needed. At the end, the binary is composed of - at that point - **off-the-shelf** components, according to a topology described in **human-readable Json** file. 
 
