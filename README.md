@@ -27,47 +27,49 @@ Diff requires **C++14** or higher. It utilizes both the language features and al
 As of today the choice of C++14 is a sweet point between taking advantage of modern C++ features and ensuring that almost all targeted toolchains provide the required standard (which is not necessarily true for C++17, yet). 
 
 ## Applicability
-The framework is a composition of multiple design patterns, some simple, others pretty complex. The first and main principle behind diff is to only rely on C++ standard. This makes its implementation robust and platform-independent. There may be cases where integration with a specific toolchain requires additional investigation and one-off work, but as verified so far - every tested setup was able smoothly support a diff-based application:
+Diff is a composition of multiple design patterns, some simple, others pretty complex. The first and main principle behind the framework is to only rely on C++ standard. This makes its implementation robust and platform-independent. There may be cases where integration with a specific toolchain requires additional investigation and one-off work, however - as verified so far - every tested setup was able smoothly support a diff-based application:
 
-<p align="center">
-<table><thead>
-  <tr>
-    <th>OS \ Architecture</th>
-    <th>x86-32/64</th>
-    <th>ARM</th>
-    <th>Risc-V</th>
-  </tr></thead>
-<tbody>
-  <tr>
-    <td>QNX Neutrino</td>
-    <td></td>
-    <td>✅ qcc</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>VxWorks</td>
-    <td>✅ gcc</td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Windows</td>
-    <td>✅ msvc</td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Linux</td>
-    <td>✅ gcc, clang</td>
-    <td></td>
-    <td>✅ gcc</td>
-  </tr>
-  <tr>
-    <td>Bare-metal</td>
-    <td></td>
-    <td>✅ armcl</td>
-    <td>✅ gcc</td>
-  </tr>
-</tbody>
+<table align="center">
+    <thead>
+        <tr>
+            <th>OS \ Architecture</th>
+            <th>x86-32/64</th>
+            <th>ARM</th>
+            <th>Risc-V</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>QNX Neutrino</td>
+            <td></td>
+            <td>✅ qcc</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>VxWorks</td>
+            <td>✅ gcc</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Windows</td>
+            <td>✅ msvc</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Linux</td>
+            <td>✅ gcc, clang</td>
+            <td></td>
+            <td>✅ gcc</td>
+        </tr>
+        <tr>
+            <td>Bare-metal</td>
+            <td></td>
+            <td>✅ armcl</td>
+            <td>✅ gcc</td>
+        </tr>
+    </tbody>
 </table>
-</p>
+
+This includes platforms like high performance multi-core **SoC**`s, small **microcontrollers** or **PLC** controllers.
