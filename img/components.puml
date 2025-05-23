@@ -1,0 +1,55 @@
+@startuml
+package "Module MessageSource <<static library>>" <<Rectangle>> #line:212f3c;text:1b2631 {
+class MessageSource <<Component>> {
++MessageSource(ILink& link)
+}
+}
+note right
+* Class <i>MessageSource</i> is an implementation of component 
+    <i>MessageSource</i>.
+* Module <i>MessageSource</i> has form of a static library and 
+    consists of that implementation.
+* Class <i>MessageSource</i> requires <i>ILink</i> to be injected 
+    in its constructor. It may be a <i>LinkGsm</i>, but may also 
+    be any other link.
+* Component <i>MessageSource</i> depends on the interface 
+    component <i>ILink</i>, but <b>not</b> any other component.
+end note
+
+package "Module ILink <<header-only library>>" <<Rectangle>> #line:212f3c;text:1b2631 {
+interface ILink <<Interface Component>> {
++bool send(const std::string &message)
+}
+}
+note right
+* Abstract class <i>ILink</i> defines an interface available for 
+    other components. 
+* Interface component <i>ILink</i> consists of that abstract class.
+* Module <i>ILink</i> has a form of a header-only library, which 
+    consists that interface component.
+* Interface components have minimal implementation 
+    to make other components depend on the smallest 
+    possible amout of code.
+end note
+
+package "Module LinkGsm <<static library>>" <<Rectangle>> #line:212f3c;text:1b2631 {
+class LinkGsm <<Component>> {
++LinkGsm()
++bool send(const std::string &message) override
+}
+}
+note right
+* Class <i>LinkGsm</i> is an implementation of component 
+    <i>LinkGsm</i>.
+* Module <i>LinkGsm</i> has form of a static library and 
+    consists of that implementation.
+* Class <i>LinkGsm</i> implements <i>ILink</i> interface 
+    and can be injected into any component requiring it.
+* Component <i>LinkGsm</i> depends on the interface 
+    component <i>ILink</i>, but <b>not</b> any other component.
+end note
+
+MessageSource --> ILink
+
+ILink <|-- LinkGsm
+@enduml

@@ -15,16 +15,33 @@ Diff operates on two component types:
 - _[regular]_ **Component** is a single C++ class which encapsulates a specific functionality. It holds the implementation. Its internal architecture may be complex, utilizing various other classes and libraries. The class itsself will only be only visible to the framework. If certain functionality needs to be exposed or utilized by it, it must be done by implementing or consuming an _interface component_.
 - **Interface Component** is a single abstract class which determines how certain functionality shall be used. It does not consist of the information on how it is implemented. The functionality represented by an interface component can be either implemented and/or consumed by a regular component. Interface components serve as joint points between regular components. For this reason they only consist of the minimal amount of code (to make it bug-proof) - ideally being just an abstract interface.
 
-**Module** is a physical representation of a component. Regular components are shipped in form of static or dynamic libraries. Since interface components are just interface declarations, they come in the form of header-only libraries. Diff refers to all these libraries as _modules_. They are a subject for versioning and dependency management, but the exact tools used (e.g. CMake, Conan 2) are up to the team and the project. 
+**Module** is a physical representation of a component. Regular components are shipped in form of static or dynamic libraries. Since interface components are just interface declarations, they come in the form of header-only libraries. Diff refers to all these libraries as modules. They are a subject for versioning and dependency management, but the exact tools used (e.g. CMake, Conan 2) are up to the team and the project. 
 
-Each module can be built and tested on its own. There is no dependency chain, as _components_ only depend on _interface components_ and its internally used tools. 
+Each module can be built and tested on its own. The dependency chain is pretty short, as components only depend on interface components (and maybe some internally used tools) - that`s it. 
 
-Framework creates **Component Instances** to compose a hierarchy required by the application. Each _component_ can be instantiated multiple times.
+Framework creates **component instances** to compose a hierarchy required by the application. Each component can be instantiated multiple times.
 
-## Requirements
-Diff requires **C++14** or higher. It utilizes both the language features and also several STL containers provided by the standard. 
+## Understand it better - simple example
+Here is a three component example of how components are related and wrapped in modules:
+<p align="center"><img src="img/components.png" alt="Exemplary diff components."/></p>
 
-As of today the choice of C++14 is a sweet point between taking advantage of modern C++ features and ensuring that almost all targeted toolchains provide the required standard (which is not necessarily true for C++17, yet). 
+From such components diff allows to construct a topology, given a Json file:
+<table align="center">
+    <tbody>
+        <tr>
+            <td><p align="center"><img src="img/instances.png" alt="Exemplary diff component instances."/></p></td>
+            <td>
+<pre>
+<code data-trim id="json">[
+    { "abc" : 123 }
+]</code>
+</pre>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
 
 ## Applicability
 Diff is a composition of multiple design patterns, some simple, others pretty complex. The first and main principle behind the framework is to only rely on C++ standard. This makes its implementation robust and platform-independent. There may be cases where integration with a specific toolchain requires additional investigation and one-off work, however - as verified so far - every tested setup was able smoothly support a diff-based application:

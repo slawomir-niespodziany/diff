@@ -1,0 +1,19 @@
+@startuml
+
+object "MessageSource: messageSource0" {
+-highPriority = true
+}
+
+object "MessageSource: messageSource1" {
+-highPriority = false
+}
+
+object "LinkGsm : linkGsm0" {
+-operator="Orange"
+-simPin="1234"
+}
+
+"MessageSource: messageSource0" o-- "LinkGsm : linkGsm0" : "ILink"
+"MessageSource: messageSource1" o-- "LinkGsm : linkGsm0" : "ILink"
+
+@enduml
