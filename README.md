@@ -1,5 +1,5 @@
 # Dependency Injection Framework - First variant
-Further referred to as **diff**.
+Further referred to as **_diff_**.
 
 ## Make a difference
 Diff is a C++ framework targeted for embedded systems. It provides a structured way to design and implement software - making it **modular**, **maintainable** and **reusable**. 
@@ -13,15 +13,15 @@ The framework uses [Dependency Injection](https://en.wikipedia.org/wiki/Dependen
 ## Diff components, modules and instances
 Diff operates on two component types:
 - _[regular]_ **Component** is a single C++ class which encapsulates a specific functionality. It holds the implementation. Its internal architecture may be complex, utilizing various other classes and libraries. The class itsself is only only visible to the framework. If certain functionality needs to be exposed or utilized by it, it must be done by implementing or consuming an _interface component_.
-- **Interface Component** is a single abstract class which determines how certain functionality shall be used. It does not consist of the information on how it is implemented. The functionality represented by an interface component can be either implemented and/or consumed by a regular component. Interface components serve as joint points between regular components. For this reason they only consist of the minimal amount of code (to make it bug-proof) - ideally being just an abstract interface.
+- **Interface Component** is a single abstract class which determines how certain functionality shall be used. It does not include implementation details. The functionality represented by an interface component can be either implemented and/or utilized by a regular component. Interface components serve as joint points between distinct regular components. For this reason they consist minimal amount of code (to make them bug-proof) - ideally being just abstract interfaces.
 
-**Module** is a physical representation of a component. Regular components are shipped in form of static or dynamic libraries. Since interface components are just interface declarations, they come in the form of header-only libraries. Diff refers to all these libraries as modules. They are a subject for versioning and dependency management, but the exact tools used (e.g. CMake, Conan 2) are up to the team and the project. 
+**Module** is a physical representation of a component. Regular components are shipped in form of _static_ or _dynamic libraries_. Since interface components are just interface declarations, they come in the form of _header-only libraries_. Diff refers to all these libraries as modules. They are a subject for versioning and dependency management, but the exact tools used (e.g. CMake, Conan 2) are up to the team and the project. 
 
-Each module can be built and tested on its own. The dependency chain is pretty short, as components only depend on interface components (and maybe some internally used tools) - that`s it. 
+Each module can be built and tested on its own. The dependency chain is kept short by components being only dependent on interface components (and possibly some internally used tools) - that`s it. 
 
-Framework creates **component instances** to compose a hierarchy required by the application. Each component can be instantiated multiple times.
+Framework creates **component instances** to compose a hierarchy required by the application. Each component can be instantiated multiple times. This hierarchy is described by a topology stored in a Json file. It is loaded at the application start and used to construct component instances and configure them. This also allows for application reconfiguration without rebuilding. The framework also provides a mechanism to drop the Json file for use-cases where it can not be used.
 
-## Understand it better - simple example
+## Example
 Here is a three component example of how components are related and wrapped in modules:
 <p align="center"><img src="img/components.png" alt="Exemplary diff components."/></p>
 
@@ -89,4 +89,4 @@ Diff is a composition of multiple design patterns, some simple, others pretty co
     </tbody>
 </table>
 
-This includes platforms like high performance multi-core **SoC**`s, small **microcontrollers** or **PLC** controllers.
+This includes platforms like high performance multi-core **SoC**`s, small **microcontrollers** and **PLC** controllers.
