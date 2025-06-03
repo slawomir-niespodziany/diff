@@ -1,8 +1,11 @@
 # Dependency Injection Framework - First variant
-Further referred to as **_diff_**.
+**_Diff_** is a C++ framework designed with embedded systems in mind. It provides a structured way to design and implement software - making it **modular**, **maintainable** and **reusable**. 
 
-## Make a difference
-Diff is a C++ framework targeted for embedded systems. It provides a structured way to design and implement software - making it **modular**, **maintainable** and **reusable**. 
+Diff allows for implementing multiple independent software components, which serve as **building blocks** for the resulting application. Assembly of the desired binary is driven with a **Json file**. Firstly, it is used CI/CD pipeline, to automatically select required components for assembly of a runnable. Secondly, the framework at launch time, where the topology described by json data is used to construct and configure 
+This means that the application can be reconfigured at launch time.
+
+## SDLC support
+Diff is a C++ framework targeted for embedded systems. 
 
 It supports embedded software development lifecycle from multiple perspectives:
 
