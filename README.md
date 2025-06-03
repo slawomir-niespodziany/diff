@@ -26,35 +26,35 @@ Here is a three component example of how components are related and wrapped in m
 <p align="center"><img src="img/components.png" alt="Exemplary diff components."/></p>
 
 From such components diff allows to construct a topology, given a Json file:
-<table align="center">
-    <tbody>
-        <tr>
-            <td><p align="center"><img src="img/instances.png" alt="Exemplary diff component instances."/></p></td>
-            <td>
-<pre>
-<code data-trim id="json">[
-	{	"type": "LinkGsm", 
-		"id": "linkGsm0",
-        "config": { "operator": "Orange,
-					"simPin": "1234" } },
-					
-	{	"type": "MessageSource", 
-		"id": "messageSource0",
-		"dependencies": [ "linkGsm0" ],
-        "config": { "highPriority": true } },
-					
-	{	"type": "MessageSource", 
-		"id": "messageSource1",
-		"dependencies": [ "linkGsm0" ],
-        "config": { "highPriority": false } }
-]</code>
-</pre>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<table align="center"><tbody><tr>
+<td><p align="center"><img src="img/instances.png" alt="Exemplary diff component instances."/></p></td>
+<td>
 
+```javascript
+[
+  {
+    "type": "LinkGsm", 
+    "id": "linkGsm0",
+    "config": { "operator": "Orange",
+    "simPin": "1234" }
+  },
+  {
+    "type": "MessageSource", 
+    "id": "messageSource0",
+    "dependencies": [ "linkGsm0" ],
+    "config": { "highPriority": true }
+  },
+  {
+    "type": "MessageSource", 
+    "id": "messageSource1",
+    "dependencies": [ "linkGsm0" ],
+    "config": { "highPriority": false }
+  }
+]
+```
 
+</td>
+</tr></tbody></table>
 
 ## Applicability
 Diff is a composition of multiple design patterns, some simple, others pretty complex. The first and main principle behind the framework is to only rely on C++ standard. This makes its implementation robust and platform-independent. There may be cases where integration with a specific toolchain requires additional investigation and one-off work, however - as verified so far - every tested setup was able smoothly support a diff-based application:
