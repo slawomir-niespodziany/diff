@@ -33,7 +33,20 @@ From such components diff allows to construct a topology, given a Json file:
             <td>
 <pre>
 <code data-trim id="json">[
-    { "abc" : 123 }
+	{	"type": "LinkGsm", 
+		"id": "linkGsm0",
+        "config": { "operator": "Orange,
+					"simPin": "1234" } },
+					
+	{	"type": "MessageSource", 
+		"id": "messageSource0",
+		"dependencies": [ "linkGsm0" ],
+        "config": { "highPriority": true } },
+					
+	{	"type": "MessageSource", 
+		"id": "messageSource1",
+		"dependencies": [ "linkGsm0" ],
+        "config": { "highPriority": false } }
 ]</code>
 </pre>
             </td>
